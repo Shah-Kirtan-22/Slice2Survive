@@ -21,6 +21,10 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(characterController.isGrounded == false)
+        {
+            direction += Physics.gravity;
+        }
         characterController.Move(direction * Time.fixedDeltaTime);
     }
 
