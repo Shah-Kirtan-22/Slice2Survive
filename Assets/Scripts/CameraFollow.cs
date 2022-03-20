@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public GameObject player;
-    private Vector3 offset;
+    private Vector3 offset; // distance between the player and the camera
 
     private void Start()
     {

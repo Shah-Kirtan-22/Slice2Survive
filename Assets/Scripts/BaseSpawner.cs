@@ -10,15 +10,14 @@ public class BaseSpawner : MonoBehaviour
     private float prefabLength;
     public Transform player;
     private int prefabNumber = 3; //the number of prefabs to spawn ahead of time
-    private float timer = 5.0f;
 
     [SerializeField]
     private List<GameObject> activePrefabs;
 
     private void Awake()
     {
-        //prefabLength = Random.Range(50.5f, 54.0f); // The z scale is 5 and the mesh size is 10 for unity + 3.5 extra mesh size to provide enough space for the player to fall through
-        prefabLength = 50.0f; 
+        prefabLength = Random.Range(50.5f, 54.0f); // The z scale is 5 and the mesh size is 10 for unity + 3.5 extra mesh size to provide enough space for the player to fall through
+        //prefabLength = 50.0f; 
     }
 
     private void Start()

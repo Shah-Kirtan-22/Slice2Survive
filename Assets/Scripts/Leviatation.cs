@@ -17,6 +17,6 @@ public class Leviatation : MonoBehaviour
 
     private void Float()
     {
-        levitation_Object.position = new Vector3(Random.Range(-4,4), Random.Range(-2, 2), transform.position.z);
+        levitation_Object.position = new Vector3(Random.Range(-5,5), Random.Range(-2, 2), transform.position.z);
     }
 }
