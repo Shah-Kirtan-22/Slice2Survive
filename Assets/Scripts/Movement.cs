@@ -19,10 +19,14 @@ public class Movement : MonoBehaviour
     
     private float timer = 10.0f; // to increase the value of the speed variable
 
+    [HideInInspector]
+    public static int coinCount;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+
+        coinCount = 0;
 
         jump = GameObject.FindGameObjectWithTag("Jump").GetComponent<Button>();
         jump.onClick.AddListener(Jump);

@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class Coin : MonoBehaviour
 {
-    [HideInInspector]
-    public int coinCount = 0;
-
     private Text scoreCount;
 
     private void Start()
@@ -24,7 +21,8 @@ public class Coin : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            coinCount++;
+            Movement.coinCount++;
+            Debug.Log(Movement.coinCount);
             DisplayScore();
             Destroy(gameObject);
         }
@@ -32,6 +30,6 @@ public class Coin : MonoBehaviour
 
     private void DisplayScore()
     {
-        scoreCount.text = "Score: " + coinCount.ToString();
+        scoreCount.text = "Score: " + Movement.coinCount.ToString();
     }
 }
