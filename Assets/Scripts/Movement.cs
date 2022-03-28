@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     private float jumpHeight = 2f;
+
+    private float gravityValue = -9.81f;
     
     private float timer = 10.0f; // to increase the value of the speed variable
 
@@ -21,6 +23,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+
         jump = GameObject.FindGameObjectWithTag("Jump").GetComponent<Button>();
         jump.onClick.AddListener(Jump);
     }
@@ -28,7 +31,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         direction.z = speed;
-        direction.y += -9.81f * Time.deltaTime;
+        direction.y += gravityValue * Time.deltaTime;
 
         if (Time.realtimeSinceStartup >= timer)
         {
@@ -49,7 +52,7 @@ public class Movement : MonoBehaviour
 
     public void Jump()
     {
-        direction.y = jumpHeight;
+        direction.y = Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
     }
 
     private void IncreaseSpeed()
