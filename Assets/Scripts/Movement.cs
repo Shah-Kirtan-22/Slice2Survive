@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     CharacterController characterController;
     Vector3 direction;
     public Button jump;
+    public Button crouch;
 
     [SerializeField]
     private float jumpHeight = 2f;
@@ -30,6 +31,9 @@ public class Movement : MonoBehaviour
 
         jump = GameObject.FindGameObjectWithTag("Jump").GetComponent<Button>();
         jump.onClick.AddListener(Jump);
+
+        crouch = GameObject.FindGameObjectWithTag("Crouch").GetComponent<Button>();
+        crouch.onClick.AddListener(Crouch);
     }
 
     private void Update()
@@ -56,7 +60,14 @@ public class Movement : MonoBehaviour
 
     public void Jump()
     {
+        if(characterController.isGrounded == true)
         direction.y = Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+    } 
+    
+    public void Crouch()
+    {
+        if (characterController.isGrounded == false)
+            direction.y = jumpHeight * -1.0f;
     }
 
     private void IncreaseSpeed()
