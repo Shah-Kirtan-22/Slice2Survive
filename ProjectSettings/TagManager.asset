@@ -8,6 +8,7 @@ TagManager:
   - Coin
   - scoreCount
   - Crouch
+  - Restart
   layers:
   - Default
   - TransparentFX

@@ -13,11 +13,11 @@ public class Accelorometer : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
     }
 
-    /*
+    
     private void Update()
     {
         rb.AddForce(Input.acceleration);
-    }*/
+    }
 
     private void FixedUpdate()
     {

@@ -9,7 +9,8 @@ public class Movement : MonoBehaviour
     private float speed = 5; // Character speed, set in the inspector
 
     CharacterController characterController;
-    Vector3 direction;
+    Vector3 direction; // used to alter the individual components for either forward movement or jump
+
     public Button jump;
     public Button crouch;
 
@@ -27,7 +28,7 @@ public class Movement : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
 
-        coinCount = 0;
+        coinCount = 0; // initialize the coin count at 0 at the start of the game
 
         jump = GameObject.FindGameObjectWithTag("Jump").GetComponent<Button>();
         jump.onClick.AddListener(Jump);
@@ -46,22 +47,27 @@ public class Movement : MonoBehaviour
             IncreaseSpeed();
             timer = Time.realtimeSinceStartup + 5.0f; // Update the speed variable every 10 seconds
         }
-    }
 
-    private void FixedUpdate()
-    {
-        characterController.Move(direction * Time.fixedDeltaTime); // will move in z at "speed" and y if pressed down
-
-        if(characterController.transform.position.y <= -15f)
+        if (characterController.transform.position.y <= -15f)
         {
             OnGameOver();
         }
+    }
+    
+    private void FixedUpdate()
+    {
+        characterController.Move(direction * Time.fixedDeltaTime); // will move in z at "speed" and y if pressed down
+        /*
+        if (characterController.transform.position.y <= -15f)
+        {
+            OnGameOver();
+        }*/
     }
 
     public void Jump()
     {
         if(characterController.isGrounded == true)
-        direction.y = Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            direction.y = Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
     } 
     
     public void Crouch()
